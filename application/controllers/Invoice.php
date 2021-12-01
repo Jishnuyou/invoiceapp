@@ -53,18 +53,16 @@ class Invoice extends CI_Controller {
             $this->load->view('invoice_add', $data);
         } else {
         $this->load->view('invoice_add', $data);
-            
-            // $this->load->view('invoice_add', $data);
-            echo "here";
+        
         $data = array(
         'name' => $this->input->post('uname'),
         'Quantity' => $this->input->post('quantity'),
         'Unit_Price' => $this->input->post('unit_price'),
         'Tax' => $this->input->post('tax')
         );
-        // $this->form_validation->clear_field_data();
+        
         $this->invoicemodel->saverecords($data);
-        // $data['message'] = 'Data Inserted Successfully';
+        
         $this->session->set_flashdata('message','Data Inserted Successfully');
         
         redirect(base_url('invoice'));
@@ -83,9 +81,7 @@ class Invoice extends CI_Controller {
     public function deletedata($id)
     {
         $this->load->library('session');
-
-    // $id=$this->input->get('id');
-    // $item = $this->itemCRUD->find_item($id);
+        
     $this->session->set_flashdata('delete','Data Removed Successfully');
 
     $response=$this->invoicemodel->deleterecords($id);
